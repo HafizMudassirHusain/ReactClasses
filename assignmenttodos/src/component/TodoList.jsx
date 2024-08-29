@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 
-
 function TodoList({todos}){
     useEffect(()=>{
         console.log("todos Change")
