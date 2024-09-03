@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import ProductCard from "../component/ProductCard";
 
 function UseEffect(){
@@ -52,10 +53,13 @@ return(
     {
         filtered.map((data,index)=>{
             return(
-                <div key={index} className="flex flex-wrap -m-4">
+              <Link to={`/UseEffect/${data.title.split(" ").join("-")}/id/${data.id}`}>
+              
+                <div key={data.id}  className="flex flex-wrap -m-4">
                      <ProductCard image={data.image} title={data.title} category={data.category}
                    price={data.price} />
                 </div>
+              </Link>
             )
         })
     }
