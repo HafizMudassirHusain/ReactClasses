@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -20,14 +21,18 @@ const ProductDetails = () => {
             <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
             <p className="text-xl font-semibold mb-4">${product.price}</p>
             <p className="text-gray-600 mb-6">{product.description}</p>
-            <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+            <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
               Add to Cart
             </button>
+            <Link to="/checkout" className="mx-5 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4 inline-block">
+               Checkout
+             </Link>
           </div>
         </div>
       ) : (
         <p>Loading...</p>
       )}
+        
     </div>
   );
 };
