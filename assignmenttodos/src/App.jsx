@@ -19,7 +19,12 @@ function App() {
     },];
     setTodos([...todosArr]);
     setTodo("");
-  },[])
+  },[todo])
+  const handleDelete = useCallback((id)=>{
+
+    const Filter = todos.filter((data) => data.id !== id) 
+     setTodos([...Filter])
+   },[todos])
   return (
     <>
     <div className='w-3/4 mx-auto'>
@@ -28,7 +33,7 @@ function App() {
     onChange={(e)=>setTodo(e.target.value)}
     onClick={handleAddtodo}
     />
-    <TodoList todos={todos}/>
+    <TodoList todos={todos} onDelete={handleDelete}/>
     </div>
 
     </>

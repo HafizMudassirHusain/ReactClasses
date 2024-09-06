@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import { data } from "autoprefixer";
+import { useEffect, useState } from "react";
 
-function TodoList({todos}){
+function TodoList({todos,onDelete}){
     useEffect(()=>{
         console.log("todos Change")
     },
-     [todos]);
+     [onDelete]);
+   
     return(
         <>
         {
@@ -15,7 +17,8 @@ function TodoList({todos}){
             <h3 className='text-2xl text-left py-3 pl-2 font-mono'>
               {todos.todo}
               </h3>
-              <button className=' bg-red-200 rounded-sm p-2 px-4'>Delte</button>
+              <button onClick={() => onDelete(todos.id)}
+               className=' bg-red-200 rounded-sm p-2 px-4'>Delte</button>
           </div>
         )
       })
