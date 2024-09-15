@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
-import {auth} from '../firebase' // Make sure you export auth correctly from firebase.js
+import {auth} from '../firebase';
 import { useNavigate } from 'react-router';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   const navigate = useNavigate();
    const handleSignIn = ()=>{
     signInWithEmailAndPassword(auth, email, password)
@@ -40,8 +41,6 @@ function LoginPage() {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-
-        // Check if error.customData exists before accessing it
         const email = error.customData ? error.customData.email : null;
 
         const credential = GoogleAuthProvider.credentialFromError(error);

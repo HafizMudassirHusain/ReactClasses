@@ -1,36 +1,28 @@
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
-import { createUserWithEmailAndPassword} from "firebase/auth";
- import auth from '../firebase';
+import auth from '../firebase';
 import { useNavigate } from 'react-router';
 function SignUpPage() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed up 
-      const user = userCredential.user;
-      // ...
-      navigate('/signin')
-      console.log("SignUp s=>",user)
+  .then((userCredential) => {
 
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-      console.log("SignUp=>",error,errorCode,errorMessage)
-    });
+    const user = userCredential.user;
+    navigate('/signin')
 
-
-
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Password:', password);
-    // Add your sign-up logic here
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+  
   };
 
   return (
