@@ -13,7 +13,9 @@ function App() {
  } 
  console.log("tramsections hogaya",transaction)
 
-
+ const handleDeleteTransaction = (index) => {
+  settransaction(transaction.filter((_, ind) => ind !== index));
+};
   return (
     <ExpenceTracker
          Amount={Amount}
@@ -22,6 +24,7 @@ function App() {
           setType={setType}
           handleAddTransaction={handleAddTransaction}
           transaction={transaction}
+          handleDeleteTransaction={handleDeleteTransaction}
     />
 
   )
