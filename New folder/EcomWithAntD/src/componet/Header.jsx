@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { Avatar, Badge, Image } from "antd";
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 function Header(){
  const isLogin = false;
+ const {cartItems} = useContext(CartContext)
     return(
         <header className="text-gray-600 body-font shadow-md">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -29,7 +32,7 @@ function Header(){
 
                 <Avatar icon={<UserOutlined />} /> 
                 <Link to={'/cart'}>
-                <Badge count={5}>
+                <Badge count={cartItems.length}>
                   <ShoppingCartOutlined  
                   style={{
                   fontSize: 30,

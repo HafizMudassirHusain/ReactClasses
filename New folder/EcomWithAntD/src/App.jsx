@@ -10,10 +10,9 @@ import Auth from './pages/Auth/Auth'
 import SignIn from './pages/Auth/SignIn'
 import SignUp from './pages/Auth/SignUp'
 
-
-
 function App() {
   return (
+    
     <BrowserRouter>
     <Routes > 
 <Route path='/auth'>
@@ -34,6 +33,7 @@ function App() {
 
     </Routes>
     </BrowserRouter>
+
   )
 }
 

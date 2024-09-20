@@ -1,41 +1,57 @@
-import { useState } from "react";
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 
-export const cartContext = createContext();
-function cartContextProvider({children}){
- const [cartItem, setCartItem] = useState();
+export const CartContext = createContext();
 
-function addToCart(item){
-    const arr = [...cartItem];
-    const itemInd = arr.findIndex((data) => data.id == item.id)
-    if(itemInd == -1){
-        arr.push({...item, quantity : 1});
-    }else{
-        arr[itemInd].quantity++;
+function CartContextProvider({ children }) {
+  const [cartItems, setCartItems] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(true);
+
+  useEffect(() => {
+    const items = localStorage.getItem("cartItems");
+    if (items) {
+      setCartItems([...JSON.parse(items)]);
     }
-    setCartItem([...arr]);
-}
+    setIsLoaded(false);
+  }, []);
 
-function updateToCart(id, type){
-    const arr = [...cartItem];
-    const itemInd = arr.findIndex((data) => data.id == id)
-    if(type == 'plus'){
-        arr[itemInd].quantity++;
-    }else{
-        arr[itemInd].quantity--;
+  useEffect(() => {
+    if (!isLoaded) {
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
     }
-    setCartItem([...arr]);
-}
+  }, [cartItems]);
 
-function removeToCart(id, type){
-    const arr = [...cartItem];
-    const itemInd = arr.findIndex((data) => data.id == id)
-    arr.splice(itemInd , 1);
-    setCartItem([...arr]);
-}
+  function addToCart(item) {
+    const arr = [...cartItems];
+    const itemInd = arr.findIndex((data) => data.id == item.id);
+    if (itemInd == -1) {
+      arr.push({ ...item, quantity: 1 });
+    } else {
+      arr[itemInd].quantity++;
+    }
+    setCartItems([...arr]);
+  }
 
-function isItemAdded(id) {
-    const arr = [...cartItem];
+  function updateToCart(id, type) {
+    const arr = [...cartItems];
+    const itemInd = arr.findIndex((data) => data.id == id);
+    if (type == "plus") {
+      arr[itemInd].quantity++;
+    } else {
+      arr[itemInd].quantity--;
+    }
+
+    setCartItems([...arr]);
+  }
+
+  function removeCart(id) {
+    const arr = [...cartItems];
+    const itemInd = arr.findIndex((data) => data.id == id);
+    arr.splice(itemInd, 1);
+    setCartItems([...arr]);
+  }
+
+  function isItemAdded(id) {
+    const arr = [...cartItems];
     const itemInd = arr.findIndex((data) => data.id == id);
     if (itemInd == -1) {
       return null;
@@ -43,15 +59,13 @@ function isItemAdded(id) {
       return arr[itemInd];
     }
   }
-
-    return(
-    <cartContext.Provider 
-    value={{cartItem, addToCart, updateToCart,removeToCart
-        ,isItemAdded
-    }}>
-        {children}
-    </cartContext.Provider>
-    )
+  return (
+    <CartContext.Provider
+      value={{ cartItems, addToCart, updateToCart, isItemAdded, removeCart }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
 }
 
-export default cartContextProvider;
+export default CartContextProvider;
