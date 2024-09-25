@@ -8,6 +8,7 @@ function Product(){
     const [search, setsearch] = useState("");
     const [category, setCategory] = useState([]);
     const [skip, setskip] = useState(0);
+    const [specificItem, setspecificItem] = useState("");
     const [limit, setlimit] = useState(20);
     const [total, setTotal] = useState(20);
     // console.log(product)
@@ -18,6 +19,7 @@ function Product(){
          .then(res => res.json())
          .then(res => setCategory(res));
     },[])
+   
 
 
 
@@ -31,8 +33,11 @@ useEffect(()=>{
 },[skip]);
 
     const filtered = product.filter((data)=> 
-    data.title.toLowerCase().includes(search.toLowerCase())
+    data.title.toLowerCase().includes(search.toLowerCase()) &&
+    specificItem.toLowerCase() == "" || 
+    data.category.toLowerCase().includes(specificItem.toLowerCase())
     )
+    console.log(product)
 
     return(
         <div className="container  p-5 m-auto ">
@@ -45,7 +50,7 @@ useEffect(()=>{
     placeholder="Select Category"
     optionFilterProp="label"
     className="w-1/3 h-14"
-    // onChange={onChange}
+    onChange={(e)=> setspecificItem(e)}
     // onSearch={onSearch}
     filterOption={(input, option) =>
       (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
