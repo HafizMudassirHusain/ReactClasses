@@ -34,8 +34,8 @@ useEffect(()=>{
 
     const filtered = product.filter((data)=> 
     data.title.toLowerCase().includes(search.toLowerCase()) &&
-    specificItem.toLowerCase() == "" || 
-    data.category.toLowerCase().includes(specificItem.toLowerCase())
+    (specificItem.toLowerCase() == "" || 
+    data.category.toLowerCase().includes(specificItem.toLowerCase()))
     )
     console.log(product)
 
