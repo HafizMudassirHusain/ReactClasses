@@ -1,40 +1,74 @@
 import emirates from '../assets/emirates.png';
 
 
-import { BarsOutlined, HeartFilled, HeartOutlined, UpOutlined } from "@ant-design/icons";
-import { Button, Select } from "antd";
-import Paragraph from 'antd/es/skeleton/Paragraph';
-
-
+import { BarsOutlined, CloseOutlined, HeartOutlined, MenuOutlined, UpOutlined } from "@ant-design/icons";
+import { Button, Select, Slider } from "antd";
+import RangeSlider from './Rangeinput';
+import { useState } from 'react';
 
 
  export default function Filter(){
+
+  const [priceRange, setPriceRange] = useState([10, 90]);
+
+  // State for sidebar toggle (open/close)
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  // Handle price range slider change
+  const handleRangeChange = (range) => {
+    setPriceRange(range);
+  };
+
+  // Toggle the sidebar on mobile
+  const toggleFilter = () => {
+    setIsFilterOpen(!isFilterOpen);
+  };
+
 return(
     <div className="parent flex w-[95%] mx-auto">
-        <div className="child w-[25%] p-2 border-r-2">
+
+ {/* Toggle Button for Sidebar on Mobile */}
+ <button
+        className="lg:hidden bg-gray-300 text-black p-2 rounded-md m-2"
+        onClick={toggleFilter}
+      >
+        {isFilterOpen ? <CloseOutlined/> : <MenuOutlined />}
+      </button>
+
+      {/* Filter Sidebar - Hidden on mobile, toggle on button click */}
+      <div
+        className={`child w-full lg:w-[25%] border-r-2 lg:block ${
+          isFilterOpen ? 'block' : 'hidden'
+        } sidebar-transition`} // Add transition class for smooth open/close
+      >
+         <div className="child w-[100%] border-r-2">
             <h1 className="font-bold text-xl p-2">Filters</h1>
 
-            <div className="price p-2" style={{borderBottom:"1px solid #8c9190"}}>
-                <div className="flex justify-between my-2">
+            <div className="price p-2 pb-8" style={{borderBottom:"1px solid #8c9190"}}>
+                <div className="flex justify-between">
                 <p>Price</p>
                 <Button style={{border:"none"}} icon={<UpOutlined />} />
                 </div>
-                <input  type="range" className="w-full px-4"/>
-                <div className="flex justify-between p-2">
-                    <p>$1200</p>
-                    <p>$1000</p>
+                <div>
+                <RangeSlider
+                     min={0}
+                     max={100}
+                     step={1}
+                     onChange={handleRangeChange}/>
                 </div>
             </div>
 
-            <div className="price p-2" style={{borderBottom:"1px solid #8c9190"}}>
-                <div className="flex justify-between my-2">
+            <div className="price p-2 pb-7" style={{borderBottom:"1px solid #8c9190"}}>
+                <div className="flex justify-between">
                 <p>Departure Time</p>
                 <Button style={{border:"none"}} icon={<UpOutlined />} />
                 </div>
-                <input  type="range" className="w-full px-4"/>
-                <div className="flex justify-between p-2">
-                    <p>12:00pm</p>
-                    <p>10:00pm</p>
+                <div>
+                <RangeSlider
+                     min={0}
+                     max={100}
+                     step={1}
+                     onChange={handleRangeChange}/>
                 </div>
             </div>
 
@@ -101,6 +135,14 @@ return(
 
 
         </div>
+      </div>
+
+
+
+
+
+
+      
 
 
         <div className="child w-[100%]">
@@ -257,6 +299,10 @@ return(
     </div>
   </div>
 </section>
+
+
+    
+
 
 
         </div>
