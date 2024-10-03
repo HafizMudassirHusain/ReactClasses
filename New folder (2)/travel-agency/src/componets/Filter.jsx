@@ -1,4 +1,6 @@
 import emirates from '../assets/emirates.png';
+import fludubai from '../assets/image41.png';
+import qatar from '../assets/image43.png';
 
 
 import { BarsOutlined, CloseOutlined, HeartOutlined, MenuOutlined, UpOutlined } from "@ant-design/icons";
@@ -10,7 +12,6 @@ import { useState } from 'react';
  export default function Filter(){
 
   const [priceRange, setPriceRange] = useState([10, 90]);
-
   // State for sidebar toggle (open/close)
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
@@ -23,9 +24,8 @@ import { useState } from 'react';
   const toggleFilter = () => {
     setIsFilterOpen(!isFilterOpen);
   };
-
 return(
-    <div className="parent flex w-[95%] mx-auto">
+    <div className="parent flex w-[100%] mx-auto mt-10">
 
  {/* Toggle Button for Sidebar on Mobile */}
  <button
@@ -187,15 +187,19 @@ return(
 
 <section className="text-gray-600 body-font">
   <div className="container px-5 py-2 mx-auto flex flex-col rounded-2xl">
+
     <div className="lg:w-6/6 rounded-lg">
-      <div className="flex shadow-lg border flex-col sm:flex-row mt-1">
-        <div className="lg:px-0 h-60 lg:w-[30%]  border sm:w-1/3 text-center sm:pr-8 sm:py-8">
-          <div className="w-[60%] h-20 rounded inline-flex items-center justify-center">
-            <img src={emirates} alt="" />
+      <div className="flex shadow-lg flex-col sm:flex-row mt-1 p-1">
+      <div className="lg:p-0 sm:w-1/3 text-center sm:pr-8 sm:py-8">
+          <div className="w-[70%] h-60 rounded inline-flex items-center justify-center">
+            <img src={emirates} alt="" width={150}  />
           </div>
         
         </div>
-        <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+
+        <div className="h-60 sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l
+         border-gray-200 sm:border-t-0
+          border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
           <div className='flex justify-between' style={{marginTop:-20}}>
             <div>
               <span className='p-1 text-sm border border-green-300'>4.2</span>
@@ -235,7 +239,7 @@ return(
           padding:20,fontWeight:"bolder",marginRight:5}}
           icon={<HeartOutlined />} 
           size={10} />
-          <Button className='w-full mx-4 p-5' style={{backgroundColor:"#32bf9e"}}>View Deals</Button>
+          <Button className='w-full mx-4 p-5 ' style={{backgroundColor:"#32bf9e"}}>View Deals</Button>
           </div>
         </div>
       </div>
@@ -247,12 +251,14 @@ return(
     <div className="lg:w-6/6 rounded-lg">
       <div className="flex shadow-lg flex-col sm:flex-row mt-10">
         <div className="lg:p-0 sm:w-1/3 text-center sm:pr-8 sm:py-8">
-          <div className="w-[60%] h-20 rounded inline-flex items-center justify-center">
-            <img src={emirates} alt="" />
+        <div className="w-[70%] h-60 rounded inline-flex items-center justify-center">
+            <img src={fludubai} alt="" width={150}  />
           </div>
         
         </div>
-        <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+        <div className="h-60 sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l
+         border-gray-200 sm:border-t-0
+          border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
           <div className='flex justify-between' style={{marginTop:-20}}>
             <div>
               <span className='p-1 text-sm border border-green-300'>4.2</span>
@@ -292,10 +298,70 @@ return(
           padding:20,fontWeight:"bolder",marginRight:5}}
           icon={<HeartOutlined />} 
           size={10} />
-          <Button className='w-full mx-4 p-5' style={{backgroundColor:"#32bf9e"}}>View Deals</Button>
+          <Button className='w-full mx-4 p-5 ' style={{backgroundColor:"#32bf9e"}}>View Deals</Button>
           </div>
         </div>
       </div>
+    </div>
+
+    <div className="lg:w-6/6 rounded-lg">
+      <div className="flex shadow-lg flex-col sm:flex-row mt-10">
+        <div className="lg:p-0 sm:w-1/3 text-center sm:pr-8 sm:py-8">
+        <div className="w-[70%] h-60 rounded inline-flex items-center justify-center">
+            <img src={qatar} alt="" width={150}  />
+          </div>
+        
+        </div>
+        <div className="h-60 sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l
+         border-gray-200 sm:border-t-0
+          border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+          <div className='flex justify-between' style={{marginTop:-20}}>
+            <div>
+              <span className='p-1 text-sm border border-green-300'>4.2</span>
+              <strong className='mx-2 text-sm'> Very Good</strong>54 reviews 
+            </div>
+            <div>
+              <p className='font-extralight pr-6' style={{fontSize:12,
+                marginTop:-5}}>starting from</p>
+              <h2 className='font-bold text-lg text-red-500'>$104</h2>
+            </div>
+          </div>
+          <div className='border-b-2 mr-5'>
+            <div className='flex'>
+               <div>
+              <input type="checkbox" name="" />
+              <label htmlFor="check" className='font-bold'> 12:00 pm - 01:20 pm </label><br />
+              <p className='font-extralight mx-6' style={{fontSize:14}}>Emirates</p>
+               </div>
+              <div className='mx-10 font-semibold'> npn stop</div> 
+              <div><p className='font-bold'>2h 29m </p>
+              <p className='font-extralight' style={{fontSize:14}}>EWR-BNA</p></div>
+            </div>
+
+            <div className='flex my-2'>
+               <div>
+              <input type="checkbox" name="" />
+              <label htmlFor="check" className='font-bold'> 12:00 pm - 01:20 pm </label><br />
+              <p className='font-extralight mx-6' style={{fontSize:14}}>Emirates</p>
+               </div>
+              <div className='mx-10 font-semibold'> npn stop</div> 
+              <div><p className='font-bold'>2h 29m </p>
+              <p className='font-extralight' style={{fontSize:14}}>EWR-BNA</p></div>
+            </div>
+          </div>
+          <div className='flex justify-between my-4'>
+          <Button style={{borderColor:"#32bf9e",color:"black",
+          padding:20,fontWeight:"bolder",marginRight:5}}
+          icon={<HeartOutlined />} 
+          size={10} />
+          <Button className='w-full mx-4 p-5 ' style={{backgroundColor:"#32bf9e"}}>View Deals</Button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className='lg:w-full rounded-lg'>
+      <Button className='my-4 p-6 bg-black text-white w-full' > show all result </Button>
     </div>
   </div>
 </section>

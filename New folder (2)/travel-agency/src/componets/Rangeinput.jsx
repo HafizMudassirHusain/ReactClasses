@@ -6,8 +6,10 @@ const RangeSlider = ({ min, max, step, onChange }) => {
   const [maxValue, setMaxValue] = useState(max);
 
   useEffect(() => {
-    onChange([minValue, maxValue]); // Update the parent with the new values
-  }, [minValue, maxValue, onChange]);
+    if (typeof onChange === "function") {
+      onChange([minValue, maxValue]); // Call only when min or max values change
+    }
+  }, [minValue, maxValue]); 
 
   const handleMinChange = (e) => {
     const value = Math.min(Number(e.target.value), maxValue - step);
