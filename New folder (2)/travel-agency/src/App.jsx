@@ -1,20 +1,20 @@
 
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import Filter from './componets/Filter'
-import Form from './componets/Form'
+import Filter from './componets/FlightListing/Filter'
+import Form from './componets/FlightListing/Form'
+import Home from './Pages/Home'
+import FlightDetails from './Pages/FlightDetails'
 
 function App() {
  
   return (
-    <>
-      <div className='m-4 p-4'>
-       <Form />
-
-       <Filter />
-
-      </div>
-       
-    </>
+  <BrowserRouter>
+  <Routes>
+    <Route path='/' element={<Home />} />
+    <Route path='/flightdetails' element={<FlightDetails />} />
+  </Routes>
+  </BrowserRouter>
   )
 }
 

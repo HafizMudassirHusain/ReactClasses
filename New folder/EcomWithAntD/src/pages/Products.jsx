@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import ProductCard from "../componet/ProductCard";
 import { Link } from "react-router-dom";
 import { Button, Pagination, Row , Select} from "antd";
+import producthero from '../assets/producthero1.1.jpg';
+import '../componet/ProductsComponent/ProductCom.css'
 
 function Product(){
     const [product, setProducts] = useState([]);
@@ -20,13 +22,10 @@ function Product(){
          .then(res => setCategory(res));
     },[])
    
-
-
-
 useEffect(()=>{
     fetch(`https://dummyjson.com/products?limit=20&skip=${skip}`)
-.then(res => res.json())
-.then(res =>{ 
+    .then(res => res.json())
+     .then(res =>{ 
   setProducts(res.products);
   setTotal(res.total);
 });
@@ -40,7 +39,26 @@ useEffect(()=>{
     console.log(product)
 
     return(
-        <div className="container  p-5 m-auto ">
+      <>
+        <div style={{backgroundImage:
+        `url(${producthero})`,
+         height: "50vh",
+        //  objectFit:"cover",
+        //  marginTop:"-100px",
+         backgroundSize: "cover",
+         backgroundRepeat: "no-repeat",}}
+         className="shop-hero h-[40vh] ">
+          <div className="white h-full ">
+           <div className="h-full text-center flex flex-col justify-center items-center">
+            <h1 className="font-semibold text-5xl">Shop</h1>
+            <div className="my-4 px-4 text-xl">
+            <Link to={'/'} className="font-semibold">{"Home > "}</Link> <Link> Shop</Link>
+            </div>
+           </div>
+          </div>
+
+         </div>
+        <div className="container p-5 m-auto ">
         <div className="container flex justify-between my-10">
          <input placeholder="Search here"
          className=" border border-blue-500 w-1/2 p-2 rounded-md" 
@@ -57,10 +75,9 @@ useEffect(()=>{
     }
     options={category.map((data)=>{
          return {label: data.name, value : data.slug};
-    })}
-  />
+    })} />
           <Link to={"/products"}>
-            <Button>Search</Button>
+            <Button className="py-6">Search</Button>
           </Link>
         </div>
   
@@ -76,10 +93,10 @@ useEffect(()=>{
           }}
       defaultCurrent={1}
       pageSize={20}
-      total={total}
-    />
+      total={total} />
         </div>
       </div>
+      </>
     )
    }
    export default Product;

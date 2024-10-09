@@ -1,9 +1,8 @@
-import dining from '../assets/dining.png'
-import living from '../assets/living.png'
-import bedroom from '../assets/hero_Lower3.png'
+import dining from '../../assets/dining.png';
+import living from '../../assets/living.png';
+import bedroom from '../../assets/hero_Lower3.png';
+import './Hero.css';
 
-
-import './Hero.css'
 function HeroLower(){
 return(
     <div className='w-[83%] my-10 mx-auto'

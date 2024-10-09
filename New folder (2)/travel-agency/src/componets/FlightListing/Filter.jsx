@@ -1,6 +1,6 @@
-import emirates from '../assets/emirates.png';
-import fludubai from '../assets/image41.png';
-import qatar from '../assets/image43.png';
+import emirates from '../../assets/emirates.png'
+import fludubai from '../../assets/image41.png';
+import qatar from '../../assets/image43.png';
 
 
 import { BarsOutlined, CloseOutlined, HeartOutlined, MenuOutlined, UpOutlined } from "@ant-design/icons";

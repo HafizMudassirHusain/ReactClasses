@@ -1,9 +1,13 @@
+import rectangle24 from '../assets/Rectangle24.png'
 import { useEffect, useState } from "react";
 import ProductCard from "../componet/ProductCard";
 import { Link } from "react-router-dom";
-import { Button, Row, Spin } from "antd";
-import Hero from "../componet/Hero";
-import HeroLower from "../componet/HeroLower";
+import { Button, Carousel, Row, Spin } from "antd";
+import Hero from "../componet/HomeComponent/Hero";
+import HeroLower from "../componet/HomeComponent/HeroLower";
+import Carousels from "../componet/HomeComponent/Carousels";
+import ImageGallery from '../componet/HomeComponent/Gallery';
+
 
    function Home(){
     const [product, setProducts] = useState([]);
@@ -38,10 +42,18 @@ useEffect(()=>{
         </Row>
        }
         </div>
-          <Link to={"/products"}>
-            <Button>See All</Button>
+        <div className="flex justify-center">
+          <Link to={"/products"} >
+            <Button style={{border: " 1px solid rgb(191, 155, 14)",color: "rgb(191, 155, 14)"}}
+           className="px-14 py-6 font-bold ">Show More</Button>
           </Link>
         </div>
+        </div>
+
+
+<Carousels />
+
+<ImageGallery />
       </div>
     )
    }

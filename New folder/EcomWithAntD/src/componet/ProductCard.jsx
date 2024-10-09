@@ -17,7 +17,7 @@ function ProductCard({item}){
             )
           }
           <Image preview={false} src={item.thumbnail} height={200}  />
-          <div className="flex flex-col justify-between p-3 w-full">
+          <div className="flex flex-col justify-between p-3 w-full bg-slate-100">
             <h1 className="font-semibold">{item.title}</h1>
             <h1 className="font-semibold">Rp ${item.price}</h1>
           </div>

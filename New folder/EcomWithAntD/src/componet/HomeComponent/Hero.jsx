@@ -1,6 +1,6 @@
 
 
-import Landheroimg from '../assets/land_hero_img1.jpg'
+import Landheroimg from '../../assets/land_hero_img1.jpg'
 import './Hero.css'
 
 function Hero(){
