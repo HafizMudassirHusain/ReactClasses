@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button, Pagination, Row , Select} from "antd";
 import producthero from '../assets/producthero1.1.jpg';
 import '../componet/ProductsComponent/ProductCom.css'
+import Banner from "../componet/ProductsComponent/Banner";
 
 function Product(){
     const [product, setProducts] = useState([]);
@@ -87,7 +88,7 @@ useEffect(()=>{
           ))}
         </Row>
         <div className="m-4 flex justify-center items-center">
-        <Pagination
+        <Pagination className="mt-8"
           onChange={(num)=>{
              setskip((num - 1) * 20)
           }}
@@ -95,6 +96,7 @@ useEffect(()=>{
       pageSize={20}
       total={total} />
         </div>
+        <Banner />
       </div>
       </>
     )

@@ -1,8 +1,12 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { CartContext } from "../context/CartContext";
+import { Link } from "react-router-dom";
+import RelatedProduct from "../componet/ProductDEt/RelatedProduct";
+
 
 function ProductDetail(){
+  const navigate = useNavigate();
     const [product ,setProduct] = useState({}); 
     const {cartItems ,addToCart, isItemAdded} = useContext(CartContext);
     const {id} = useParams();
@@ -15,7 +19,16 @@ function ProductDetail(){
     
     return(
         <section className="text-gray-600 body-font overflow-hidden">
-        <div className="container px-5 py-24 mx-auto">
+          <div className="h-[10vh] bg-yellow-50 flex items-center px-20" style={{background:"#f0dfaa"}}>
+         <Link to={'/'}>
+          <div className="w-[5vw]"> Home {" > "}</div>
+         </Link>
+         <Link to={'/products'}>
+             <div className="w-[5vw] "> Shop {" > "}</div>
+         </Link>
+          <div className="w-[10vw]">{product.title} </div>
+          </div>
+        <div className="container px-5 py-24 mx-auto" style={{borderBottom:"1px solid #dbdad7"}}>
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
             <img
               alt="ecommerce"
@@ -145,6 +158,9 @@ function ProductDetail(){
               </div>
             </div>
           </div>
+        </div>
+        <div>
+          <RelatedProduct cate={product.category} />
         </div>
       </section>
       
